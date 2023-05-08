@@ -56,10 +56,16 @@ useEffect( () => {
 
 // con esto seteo EL PRESUPUESTO en el localStorage
 useEffect( () => {
-  localStorage.setItem('presupuesto', presupuesto ?? 0)
+  localStorage.setItem('presupuesto', presupuesto ?? 0)  
 }, [presupuesto] )
 
-
+// con esto hago que si ya tengo un presupuesto, no lo vuelva a pedir si recargo app
+useEffect( () => {
+  const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
+  if(presupuestoLS > 0) {
+    setIsValidPresupuesto(true)  // con esto verifico si al cargar recupere un valor valido del localStorage asi no vuelvo a pedir lo mismo al cohete.
+  }
+},[]);
 
 
 // con esto seteo LOS GASTOS en el localStorage, PERO RECUERDO QUE NO PUEDO ALMACENAR ARREGLOS SINO SOLO STRINGS
@@ -80,13 +86,7 @@ useEffect( () => {
 
 
 
-// con esto hago que si ya tengo un presupuesto, no lo vuelva a pedir si recargo app
-useEffect( () => {
-  const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
-  if(presupuestoLS > 0) {
-    setIsValidPresupuesto(true)  // con esto verifico si al cargar recupere un valor valido del localStorage asi no vuelvo a pedir lo mismo al cohete.
-  }
-},[]);
+
 
 
 // ANIMACION MODAL

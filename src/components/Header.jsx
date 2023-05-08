@@ -20,7 +20,7 @@ const Header = ( {
           gastos={gastos}
           setGastos={setGastos}
           presupuesto={presupuesto}
-          setPresupuesto={setGastos}
+          setPresupuesto={setPresupuesto}
           setIsValidPresupuesto={setIsValidPresupuesto}    
         />
       :
